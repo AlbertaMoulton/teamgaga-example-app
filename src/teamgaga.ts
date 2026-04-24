@@ -1,4 +1,6 @@
-import type { PullMessageResp } from "./type";
+import type { PullMessageResp, TeamGagaApiResp } from "./type";
+
+const TEAMGAGA_API_BASE_URL = "https://open.teamgaga.com";
 
 const MessageType = {
   TEXT: 0,
@@ -16,7 +18,7 @@ export class TeamGagaClient {
   // Fetch messages from TeamGaga API
   async pollMessages(): Promise<PullMessageResp> {
     const response = await fetch(
-      `https://open.teamgaga.com1/bot/v1/messages`,
+      `${TEAMGAGA_API_BASE_URL}/bot/v1/messages`,
       {
         method: "GET",
         headers: {
@@ -29,8 +31,8 @@ export class TeamGagaClient {
       throw new Error(`pollMessages error! status: ${response.status}`);
     }
 
-    const data = (await response.json()) as PullMessageResp;
-    return data;
+    const result = (await response.json()) as TeamGagaApiResp<PullMessageResp>;
+    return result.data;
   }
 
   async sendMessage({
@@ -43,7 +45,7 @@ export class TeamGagaClient {
     quote_id?: string; // 来自监听到的消息的 message_id，如果是回复消息则必填
   }): Promise<{ message_id: string }> {
     const response = await fetch(
-      `https://open.teamgaga.com/bot/v1/messages`,
+      `${TEAMGAGA_API_BASE_URL}/bot/v1/messages`,
       {
         method: "POST",
         headers: {

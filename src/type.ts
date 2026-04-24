@@ -21,6 +21,12 @@ export type EventStruct = {
 }
 export type PullMessageResp = {
     im: MessageStruct[],
-    event: EventStruct,
-    events: EventStruct[],
+    event: EventStruct[],
+}
+export type TeamGagaApiResp<T> = {
+    status: boolean,
+    code: number,
+    message: string,
+    data: T,
+    request_id: string,
 }
