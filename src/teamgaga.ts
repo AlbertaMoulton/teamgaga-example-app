@@ -16,7 +16,7 @@ export class TeamGagaClient {
   // Fetch messages from TeamGaga API
   async pollMessages(): Promise<PullMessageResp> {
     const response = await fetch(
-      `https://open.teamgaga.com/api/v1/bot/messages`,
+      `https://open.teamgaga.com1/bot/v1/messages`,
       {
         method: "GET",
         headers: {
@@ -36,12 +36,14 @@ export class TeamGagaClient {
   async sendMessage({
     channelId,
     content,
+    quote_id,
   }: {
     channelId: string;
     content: string;
+    quote_id?: string; // 来自监听到的消息的 message_id，如果是回复消息则必填
   }): Promise<{ message_id: string }> {
     const response = await fetch(
-      `https://open.teamgaga.com/api/v2/bot/messages`,
+      `https://open.teamgaga.com/bot/v1/messages`,
       {
         method: "POST",
         headers: {
@@ -51,6 +53,8 @@ export class TeamGagaClient {
         body: JSON.stringify({
           channel_id: channelId,
           content,
+          quote_id,
+          type: MessageType.TEXT,
         }),
       },
     );
