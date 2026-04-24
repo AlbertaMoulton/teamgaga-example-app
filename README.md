@@ -1,6 +1,6 @@
 # TeamGaga Dice Bot Example
 
-This is a small TeamGaga bot demo for beginners. It polls channel messages, listens for messages that start with `@{!TEAMGAGA_BOT_ID}`, and replies with a three-dice `big` or `small` game result.
+A tiny TeamGaga bot demo for beginners. It polls channel messages, listens for messages that start with `@{!TEAMGAGA_BOT_ID}`, and replies to `roll` with a dice result.
 
 ## Setup
 
@@ -23,11 +23,14 @@ POLL_INTERVAL_MS=3000
 bun run start
 ```
 
-## Chat Commands
+## Chat Command
 
 ```text
-@{!YOUR_BOT_ID} roll big
-@{!YOUR_BOT_ID} roll small
+@{!YOUR_BOT_ID} roll
 ```
 
-The bot rolls three dice. Totals from `11` to `18` are `big`, and totals from `3` to `10` are `small`.
+Example reply:
+
+```text
+You rolled 4.
+```

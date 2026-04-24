@@ -2,15 +2,9 @@ import type { PullMessageResp, TeamGagaApiResp } from "./type";
 
 const TEAMGAGA_API_BASE_URL = "https://open.teamgaga.com";
 
-const MessageType = {
-  TEXT: 0,
-  AUDIO: 1,
-  RICH_TEXT: 7,
-  FILES: 13,
-} as const;
-
 export class TeamGagaClient {
   private token: string;
+
   constructor() {
     this.token = process.env.TEAMGAGA_BOT_TOKEN || "";
   }
@@ -42,7 +36,7 @@ export class TeamGagaClient {
   }: {
     channelId: string;
     content: string;
-    quote_id?: string; // 来自监听到的消息的 message_id，如果是回复消息则必填
+    quote_id?: string;
   }): Promise<{ message_id: string }> {
     const response = await fetch(
       `${TEAMGAGA_API_BASE_URL}/bot/v1/messages`,
@@ -56,7 +50,7 @@ export class TeamGagaClient {
           channel_id: channelId,
           content,
           quote_id,
-          type: MessageType.TEXT,
+          type: 0,
         }),
       },
     );
