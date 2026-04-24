@@ -10,7 +10,7 @@ const MessageType = {
 export class TeamGagaClient {
   private token: string;
   constructor() {
-    this.token = process.env.TEAMGAGA_TOKEN || "";
+    this.token = process.env.TEAMGAGA_BOT_TOKEN || "";
   }
 
   // Fetch messages from TeamGaga API
