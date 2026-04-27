@@ -3,11 +3,21 @@
 A tiny TeamGaga bot demo for beginners, built for the [getting started guide](https://open.teamgaga.com/docs/quickOverview/getting-started). It polls channel messages, listens for messages that start with `@{!TEAMGAGA_BOT_ID}`, and replies to `roll` with a dice result.
 
 ## Setup
+First clone the project:
+```bash
+git clone https://github.com/AlbertaMoulton/teamgaga-example-app.git
+
+```
+Then navigate to its directory and install dependencies:
+
 
 ```bash
+cd teamgaga-example-app
 bun install
 cp .env.sample .env
 ```
+## Get app credentials
+Fetch the credentials from your app's settings and add them to a .env file (see .env.sample for an example).
 
 Fill in `.env`:
 
