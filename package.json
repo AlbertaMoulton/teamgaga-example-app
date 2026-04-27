@@ -6,10 +6,10 @@
   "scripts": {
     "start": "bun --hot src/bot.ts"
   },
+  "dependencies": {
+    "@teamgaga/sdk": "file:../sdk-js"
+  },
   "devDependencies": {
     "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
   }
 }
