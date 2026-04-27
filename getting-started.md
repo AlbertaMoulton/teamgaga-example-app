@@ -47,6 +47,8 @@ POLL_INTERVAL_MS=3000
 - `TEAMGAGA_BOT_TOKEN` 用来调用 TeamGaga Bot API。
 - `POLL_INTERVAL_MS` 是轮询间隔，默认可以保持 `3000`。
 
+目前 Bot 只能通过轮询方式监听消息，也就是不断调用 `pollMessages()` 查询是否有新消息。建议保持默认的 `3000ms` 或更长，不要把轮询间隔设置得太短，否则会产生过于频繁的 API 请求。
+
 ### 步骤 3：运行 Bot
 
 ```bash
@@ -54,6 +56,22 @@ bun run start
 ```
 
 启动后，Bot 会循环调用 `pollMessages()` 拉取频道消息。
+
+消息处理流程如下：
+
+```mermaid
+flowchart TD
+  user["用户在 TeamGaga 频道发送消息"] --> channel["TeamGaga 聊天频道"]
+  bot["Bot 定时调用 pollMessages()"] --> channel
+  channel --> bot
+  bot --> mention["消息是否以 @{!TEAMGAGA_BOT_ID} 开头？"]
+  mention -->|否| ignore["忽略这条消息"]
+  mention -->|是| command["解析消息内容"]
+  command --> roll["如果命令是 roll，就生成骰子点数"]
+  roll --> reply["调用 sendMessage() 回复消息"]
+  reply --> quote["quote_id 使用原消息的 message_id"]
+  quote --> channel
+```
 
 ### 步骤 4：在聊天频道中测试
 
