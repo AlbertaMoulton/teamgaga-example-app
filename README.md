@@ -1,6 +1,6 @@
 # TeamGaga Dice Bot Example
 
-A tiny TeamGaga bot demo for beginners. It polls channel messages, listens for messages that start with `@{!TEAMGAGA_BOT_ID}`, and replies to `roll` with a dice result.
+A tiny TeamGaga bot demo for beginners, built for the [getting started guide](https://open.teamgaga.com/docs/quickOverview/getting-started). It polls channel messages, listens for messages that start with `@{!TEAMGAGA_BOT_ID}`, and replies to `roll` with a dice result.
 
 ## Setup
 
