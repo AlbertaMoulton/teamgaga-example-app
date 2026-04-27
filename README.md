@@ -40,10 +40,10 @@ flowchart LR
   user["User sends message in TeamGaga"] --> channel["TeamGaga channel"]
   bot["Bot polls messages with pollMessages()"] --> channel
   channel --> bot
-  bot --> check["Message starts with @{!TEAMGAGA_BOT_ID}?"]
-  check -->|No| ignore["Ignore"]
-  check -->|Yes| handle["Handle roll command"]
-  handle --> reply["Reply with sendMessage() and quote_id"]
+  bot --> decide["Developer decides whether to handle the message"]
+  decide -->|No| ignore["Ignore"]
+  decide -->|Yes| handle["Run custom bot logic"]
+  handle --> reply["Reply with sendMessage() and optional quote_id"]
   reply --> channel
 ```
 
