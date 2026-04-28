@@ -2,29 +2,23 @@ import { Bot } from "@teamgaga/sdk";
 
 const botToken = process.env.TEAMGAGA_BOT_TOKEN;
 const botId = process.env.TEAMGAGA_BOT_ID;
-
 if (!botToken) throw new Error("Missing TEAMGAGA_BOT_TOKEN in .env");
 if (!botId) throw new Error("Missing TEAMGAGA_BOT_ID in .env");
 
 // Create an instance of the `Bot` class and pass your bot token to it.
 const bot = new Bot(botToken);
 
-// somebody is mentioning me
-const mention = `@{!${botId}}`;
-
 // Handle messages.
 bot.on("message", async (ctx) => {
-  const command = ctx.text.startsWith(mention)
-    ? ctx.text.slice(mention.length).trim()
-    : "";
-
-  if (command !== "roll") return;
-
-  const point = Math.floor(Math.random() * 6) + 1;
-  await ctx.reply(`You rolled ${point}.`);
+  if (ctx.text.includes("roll the dice")) {
+    const point = Math.floor(Math.random() * 6) + 1;
+    await ctx.reply(`You rolled ${point}.`);
+  } else {
+    await ctx.reply("Try: roll the dice");
+  }
 });
 
-console.log(`Dice bot is running. Try: ${mention} roll`);
+console.log(`Dice bot is running. Try: roll the dice`);
 
 // Start the bot.
 bot.start({
