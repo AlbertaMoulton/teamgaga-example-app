@@ -33,19 +33,6 @@ POLL_INTERVAL_MS=3000
 bun run start
 ```
 
-## Message Flow
-
-```mermaid
-flowchart LR
-  user["User sends message in TeamGaga"] --> channel["TeamGaga channel"]
-  bot["Bot polls messages with pollMessages()"] --> channel
-  channel --> bot
-  bot --> decide["Developer decides whether to handle the message"]
-  decide -->|No| ignore["Ignore"]
-  decide -->|Yes| handle["Run custom bot logic"]
-  handle --> reply["Reply with sendMessage() and optional quote_id"]
-  reply --> channel
-```
 
 This demo currently listens for messages by polling. Keep `POLL_INTERVAL_MS` at `3000` or higher unless you have a good reason to change it. A very short interval can send too many requests.
 
