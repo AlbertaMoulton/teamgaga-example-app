@@ -1,4 +1,4 @@
-import { Bot } from "@teamgaga/sdk";
+import { Bot } from "@teamgaga/open-api";
 
 const botToken = process.env.TEAMGAGA_BOT_TOKEN;
 const botId = process.env.TEAMGAGA_BOT_ID;

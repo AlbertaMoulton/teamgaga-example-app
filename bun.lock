@@ -5,7 +5,7 @@
     "": {
       "name": "teamgaga-example-app",
       "dependencies": {
-        "@teamgaga/sdk": "^0.1.2",
+        "@teamgaga/open-api": "^0.1.3",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -13,7 +13,7 @@
     },
   },
   "packages": {
-    "@teamgaga/sdk": ["@teamgaga/sdk@0.1.2", "", {}, "sha512-Sy1cl82tFEuftE5lss5mMhb2tVn6ay7Y0Gmx2tKbwAJAEPpxXCInhcoexXLwpYv/sDbeDrvgCzrMuz1FN+YzQA=="],
+    "@teamgaga/open-api": ["@teamgaga/open-api@0.1.3", "", {}, "sha512-vWwC1U6GqSM4sZTwPg2CN6BfXv5sv8EdE8CQpsEzwm5facjZoErsbZv/7pjlngclsktHwgRtv9WVk3kx6V65Wg=="],
 
     "@types/bun": ["@types/bun@1.3.13", "", { "dependencies": { "bun-types": "1.3.13" } }, "sha512-9fqXWk5YIHGGnUau9TEi+qdlTYDAnOj+xLCmSTwXfAIqXr2x4tytJb43E9uCvt09zJURKXwAtkoH4nLQfzeTXw=="],
 
