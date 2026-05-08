@@ -10,15 +10,14 @@ const bot = new Bot(botToken);
 
 // Handle messages.
 bot.on("message", async (ctx) => {
-  if (ctx.text.includes("roll the dice")) {
+  // pretty print the message object to the console
+  console.log(JSON.stringify(ctx.message, null, 2));
+  if (ctx.text.includes("roll")) {
     const point = Math.floor(Math.random() * 6) + 1;
-    await ctx.reply(`You rolled ${point}.`);
-  } else {
-    await ctx.reply("Try: roll the dice");
+    await ctx.reply(`你的点数是 ${point}.`);
   }
 });
 
-console.log(`Dice bot is running. Try: roll the dice`);
 
 // Start the bot.
 bot.start({
