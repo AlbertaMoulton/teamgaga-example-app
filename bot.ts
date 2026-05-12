@@ -12,7 +12,7 @@ const bot = new Bot(botToken);
 bot.on("message", async (ctx) => {
   // pretty print the message object to the console
   console.log(JSON.stringify(ctx.message, null, 2));
-  if (ctx.text.includes("roll")) {
+  if (ctx.text?.includes("roll")) {
     const point = Math.floor(Math.random() * 6) + 1;
     await ctx.reply(`你的点数是 ${point}.`);
   }
@@ -20,6 +20,4 @@ bot.on("message", async (ctx) => {
 
 
 // Start the bot.
-bot.start({
-  pollInterval: Number(process.env.POLL_INTERVAL_MS || 3000),
-});
+bot.start();
